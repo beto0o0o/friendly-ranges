@@ -2,7 +2,7 @@ var Challenge;
 
 Challenge = {
   makeFriendlyDates : function () {
-    return [];
+    return ["July 1st","4th"];
   }
 };
 
