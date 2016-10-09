@@ -6,16 +6,48 @@ Challenge = {
     var second = input[1];
     var firstParts = this.splitDate(first);
     var secondParts = this.splitDate(second);
+    var monthName = this.monthName(firstParts[1]);
+    var firstOrdinal = this.ordinal(firstParts[2]);
+    var secondOrdinal = this.ordinal(secondParts[2]);
+    var secondMonthName = this.monthName(secondParts[1]);
     if ( firstParts[0] == secondParts[0] &&
          firstParts[1] == secondParts[1] ) {
-        var monthName = this.monthName(firstParts[1]);
-        var firstOrdinal = this.ordinal(firstParts[2]);
-        var secondOrdinal = this.ordinal(secondParts[2]);
-        return [monthName + ' ' + firstOrdinal, secondOrdinal];
+           if (firstParts[2] == secondParts[2]) {
+             return [monthName + ' ' + firstOrdinal + "," + " " + firstParts[0]];
+           }
+           else {
+             return [monthName + ' ' + firstOrdinal, secondOrdinal];
+           }
     }
 
+    if (firstParts[0] != secondParts[0] && firstParts[1] != secondParts[1]) {
+      if (secondParts[0] - firstParts[0] > 1) {
+        return [monthName + " " + firstOrdinal + "," + " " + firstParts[0], secondMonthName + " " + secondOrdinal + "," + " " +secondParts[0]];
+      }
+      else {
+        return [monthName + " " + firstOrdinal, secondMonthName + " " + secondOrdinal];
+      }
+    }
 
-    return ["July 1st","4th"];
+    if (firstParts[0] == secondParts[0] && firstParts[1] != secondParts[1]) {
+      return [monthName + " " + firstOrdinal + "," + " " + firstParts[0], secondMonthName + " " + secondOrdinal];
+    }
+
+    if (secondParts[0] - firstParts[0] == 1 ) {
+      if (firstParts[1] > secondParts[1]) {
+        return [monthName + " " + firstOrdinal + "," + " " + firstParts[0], secondMonthName + " " + secondOrdinal];
+      }
+      else if (firstParts[1] == secondParts[1] && firstParts[2] > secondParts[2]) {
+        return [monthName + " " + firstOrdinal + "," + " " + firstParts[0], secondMonthName + " " + secondOrdinal];
+      }
+    }
+
+    if (firstParts[1] == secondParts[1] &&
+        firstParts[2] == secondParts[2] &&
+        firstParts[0] != secondParts[0]) {
+          return [monthName + " " + firstOrdinal + "," + " " + firstParts[0], secondMonthName + " " + secondOrdinal + "," + " " +secondParts[0]];
+        }
+    // return ["July 1st","4th"];
   },
 
   splitDate: function(date) {

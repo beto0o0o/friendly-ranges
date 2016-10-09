@@ -102,7 +102,43 @@ describe('#makeFriendlyDates', function(){
   it('for different month same year should return month and day', function() {
     var input = ["2017-03-01", "2017-05-05"];
     var actual = challenge.makeFriendlyDates(input);
-    var expected = ["March 1st, 2017","May 5th"];
+    var expected = ['March 1st, 2017',"May 5th"];
+    expect(actual).to.eql(expected);
+  })
+});
+
+describe('#makeFriendlyDates', function(){
+  it('for difference more than 1 between years', function() {
+    var input = ["2016-12-01", "2018-02-03"];
+    var actual = challenge.makeFriendlyDates(input);
+    var expected = ['December 1st, 2016','February 3rd, 2018'];
+    expect(actual).to.eql(expected);
+  })
+});
+
+describe('#makeFriendlyDates', function(){
+  it('for the same dates', function() {
+    var input = ["2018-01-13", "2018-01-13"];
+    var actual = challenge.makeFriendlyDates(input);
+    var expected = ["January 13th, 2018"];
+    expect(actual).to.eql(expected);
+  })
+});
+
+describe('#makeFriendlyDates', function(){
+  it('for difference less than one year', function() {
+    var input = ["2022-09-05", "2023-09-04"];
+    var actual = challenge.makeFriendlyDates(input);
+    var expected = ["September 5th, 2022","September 4th"];
+    expect(actual).to.eql(expected);
+  })
+});
+
+describe('#makeFriendlyDates', function(){
+  it('for different year same month and day', function() {
+    var input = ["2022-09-05", "2023-09-05"];
+    var actual = challenge.makeFriendlyDates(input);
+    var expected = ["September 5th, 2022","September 5th, 2023"];
     expect(actual).to.eql(expected);
   })
 });
