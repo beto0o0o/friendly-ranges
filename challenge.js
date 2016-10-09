@@ -8,7 +8,10 @@ Challenge = {
     var secondParts = this.splitDate(second);
     if ( firstParts[0] == secondParts[0] &&
          firstParts[1] == secondParts[1] ) {
-        return ["July 1st","4th"];
+        var monthName = this.monthName(firstParts[1]);
+        var firstOrdinal = this.ordinal(firstParts[2]);
+        var secondOrdinal = this.ordinal(secondParts[2]);
+        return [monthName + ' ' + firstOrdinal, secondOrdinal];
     }
 
 
