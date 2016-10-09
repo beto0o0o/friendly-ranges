@@ -25,3 +25,12 @@ describe('#makeFriendlyDates', function(){
     expect(actual).to.eql(expected);
   })
 });
+
+describe('#splitDate', function(){
+  it('should split the date', function() {
+    var input = '2016-07-01';
+    var actual = challenge.splitDate(input);
+    var expected = ["2016","07","01"];
+    expect(actual).to.eql(expected);
+  })
+});
