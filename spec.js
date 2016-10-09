@@ -30,7 +30,16 @@ describe('#splitDate', function(){
   it('should split the date', function() {
     var input = '2016-07-01';
     var actual = challenge.splitDate(input);
-    var expected = ["2016","07","01"];
+    var expected = [2016,7,1];
+    expect(actual).to.eql(expected);
+  })
+});
+
+describe('#monthName', function(){
+  it('given 7 should return the July', function() {
+    var input = 7;
+    var actual = challenge.monthName(input);
+    var expected = 'July';
     expect(actual).to.eql(expected);
   })
 });
