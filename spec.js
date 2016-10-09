@@ -43,3 +43,48 @@ describe('#monthName', function(){
     expect(actual).to.eql(expected);
   })
 });
+
+describe('#ordinal', function(){
+  it('given 1 should return the 1st', function() {
+    var input = 1;
+    var actual = challenge.ordinal(input);
+    var expected = '1st';
+    expect(actual).to.eql(expected);
+  })
+});
+
+describe('#ordinal', function(){
+  it('given 22 should return the 2nd', function() {
+    var input = 22;
+    var actual = challenge.ordinal(input);
+    var expected = '22nd';
+    expect(actual).to.eql(expected);
+  })
+});
+
+describe('#ordinal', function(){
+  it('given 11 should return the 11th', function() {
+    var input = 11;
+    var actual = challenge.ordinal(input);
+    var expected = '11th';
+    expect(actual).to.eql(expected);
+  })
+});
+
+describe('#ordinal', function(){
+  it('given 20 should return the 20th', function() {
+    var input = 20;
+    var actual = challenge.ordinal(input);
+    var expected = '20th';
+    expect(actual).to.eql(expected);
+  })
+});
+
+describe('#ordinal', function(){
+  it('given 23 should return the 23rd', function() {
+    var input = 23;
+    var actual = challenge.ordinal(input);
+    var expected = '23rd';
+    expect(actual).to.eql(expected);
+  })
+});

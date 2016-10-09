@@ -39,7 +39,28 @@ Challenge = {
     ];
 
     return monthNames[ monthNumber - 1 ];
-  }
+  },
+
+  ordinal: function(number) {
+
+    if ( number == 1 ||
+         number == 21 ||
+         number == 31 ) {
+        return number + "st";
+    }
+
+    if ( number == 2 ||
+         number == 22 ) {
+        return number + "nd";
+    }
+
+    if ( number == 3 ||
+         number == 23 ) {
+        return number + "rd";
+    }
+
+    return number + "th";
+  },
 };
 
 module.exports = Challenge;
