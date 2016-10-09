@@ -18,7 +18,7 @@ describe('#makeFriendlyDates', function(){
 });
 
 describe('#makeFriendlyDates', function(){
-  it(' should return an array', function() {
+  it('for same year and month should return month name and days', function() {
     var input = ['2016-07-01', '2016-07-04'];
     var actual = challenge.makeFriendlyDates(input);
     var expected = ["July 1st","4th"];
@@ -85,6 +85,24 @@ describe('#ordinal', function(){
     var input = 23;
     var actual = challenge.ordinal(input);
     var expected = '23rd';
+    expect(actual).to.eql(expected);
+  })
+});
+
+describe('#makeFriendlyDates', function(){
+  it('for close months return month name and day', function() {
+    var input = ["2016-12-01", "2017-02-03"];
+    var actual = challenge.makeFriendlyDates(input);
+    var expected = ["December 1st","February 3rd"];
+    expect(actual).to.eql(expected);
+  })
+});
+
+describe('#makeFriendlyDates', function(){
+  it('for different month same year should return month and day', function() {
+    var input = ["2017-03-01", "2017-05-05"];
+    var actual = challenge.makeFriendlyDates(input);
+    var expected = ["March 1st, 2017","May 5th"];
     expect(actual).to.eql(expected);
   })
 });
