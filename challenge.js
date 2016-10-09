@@ -10,44 +10,51 @@ Challenge = {
     var firstOrdinal = this.ordinal(firstParts[2]);
     var secondOrdinal = this.ordinal(secondParts[2]);
     var secondMonthName = this.monthName(secondParts[1]);
-    if ( firstParts[0] == secondParts[0] &&
-         firstParts[1] == secondParts[1] ) {
-           if (firstParts[2] == secondParts[2]) {
-             return [monthName + ' ' + firstOrdinal + "," + " " + firstParts[0]];
-           }
-           else {
-             return [monthName + ' ' + firstOrdinal, secondOrdinal];
-           }
-    }
-
-    if (firstParts[0] != secondParts[0] && firstParts[1] != secondParts[1]) {
-      if (secondParts[0] - firstParts[0] > 1) {
-        return [monthName + " " + firstOrdinal + "," + " " + firstParts[0], secondMonthName + " " + secondOrdinal + "," + " " +secondParts[0]];
+    // when the year is the same
+    if ( firstParts[0] == secondParts[0] ) {
+      // same month
+      if (firstParts[1] == secondParts[1]) {
+        // same day
+        if (firstParts[2] == secondParts[2]) {
+          return [monthName + ' ' + firstOrdinal + "," + " " + firstParts[0]];
+        }
+        // different day
+        else {
+          return [monthName + ' ' + firstOrdinal, secondOrdinal];
+        }
       }
+      // different month
       else {
-        return [monthName + " " + firstOrdinal, secondMonthName + " " + secondOrdinal];
+        return [monthName + " " + firstOrdinal + "," + " " + firstParts[0], secondMonthName + " " + secondOrdinal];
       }
     }
-
-    if (firstParts[0] == secondParts[0] && firstParts[1] != secondParts[1]) {
-      return [monthName + " " + firstOrdinal + "," + " " + firstParts[0], secondMonthName + " " + secondOrdinal];
+    // when the year is different but month and day are the same
+    if (firstParts[0] != secondParts[0]) {
+      if (firstParts[1] == secondParts[1]) {
+        if (firstParts[2] == secondParts[2]) {
+          return [monthName + " " + firstOrdinal + "," + " " + firstParts[0],
+           secondMonthName + " " + secondOrdinal + "," + " " +secondParts[0]];
+        }
+      }
     }
-
-    if (secondParts[0] - firstParts[0] == 1 ) {
+    // when the difference is less than one year
+    if (secondParts[0] - firstParts[0] == 1) {
       if (firstParts[1] > secondParts[1]) {
-        return [monthName + " " + firstOrdinal + "," + " " + firstParts[0], secondMonthName + " " + secondOrdinal];
+        return [monthName + " " + firstOrdinal,
+        secondMonthName + " " + secondOrdinal];
       }
       else if (firstParts[1] == secondParts[1] && firstParts[2] > secondParts[2]) {
-        return [monthName + " " + firstOrdinal + "," + " " + firstParts[0], secondMonthName + " " + secondOrdinal];
+        return [monthName + " " + firstOrdinal + "," + " " + firstParts[0],
+         secondMonthName + " " + secondOrdinal];
       }
     }
-
-    if (firstParts[1] == secondParts[1] &&
-        firstParts[2] == secondParts[2] &&
-        firstParts[0] != secondParts[0]) {
-          return [monthName + " " + firstOrdinal + "," + " " + firstParts[0], secondMonthName + " " + secondOrdinal + "," + " " +secondParts[0]];
-        }
-    // return ["July 1st","4th"];
+    // when the difference is more than one year
+    if (secondParts[0] - firstParts[0] > 1) {
+      if (firstParts[1] != secondParts[1]) {
+        return [monthName + " " + firstOrdinal + "," + " " + firstParts[0],
+         secondMonthName + " " + secondOrdinal + "," + " " +secondParts[0]];
+      }
+    }
   },
 
   splitDate: function(date) {
